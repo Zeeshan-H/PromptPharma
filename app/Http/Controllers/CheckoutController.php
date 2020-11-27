@@ -70,8 +70,8 @@ class CheckoutController extends Controller
                     'order_id' => $order->id,
                     'quantity' => $product['quantity'],
                     'user_id' => $user->id,
-                    'product_id' => $product['product']->id,
-                    'unit_price' => $product['product']->price
+                    'product_id' => 0,
+                    'unit_price' => $product['price']
                    
                 ]);
                }

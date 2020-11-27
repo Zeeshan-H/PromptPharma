@@ -316,6 +316,7 @@
                                     <div class="card-body">
                                     @php
                                         foreach($categories as $cat) {
+
                                             $cats[] = $cat['type'];
                                         }
                                         $cats = array_unique($cats);
@@ -356,9 +357,11 @@
                                             <div class="slider-range mb-3" data-plugin-slider-range></div>
                                             @php
                                                 foreach($products as $prod) {
+
                                                     $prod = $prod;
                                            
                                                 }
+
                                             @endphp
 
 
@@ -456,6 +459,7 @@
                                             <div class="image-frame-action">
                                                 {{-- <a href="{{route('cart', [$product, $product])}}" id="btncart-{{$product->image_id}}" onclick="change('{{$product->image_id}}')" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a> --}}
                                                 <a href="{{route('details', $product['name'])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">View Details</a><br>
+                                     
                                             </div>
                                         </div>
                                     </div>
@@ -466,11 +470,11 @@
                                  
                                             @if ($item['price'] == null)
                                             <span class="price font-primary text-4"><strong class="text-color-dark">{{@$item['name'].': '. 'N/A'}}</strong></span><br>
-                                            {{-- <a href="{{route('details', $product['name'])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">View Details</a><br> --}}
+                                            {{-- <a href="{{route('cart', [$product['name'], $item['name'], 0, $item['quantity']])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a><br> --}}
                                             
                                             @else 
                                             <span class="price font-primary text-4"><strong class="text-color-dark">{{@$item['name'].': '.@$item['price'].'PKR'}}</strong></span><br>
-                                            {{-- <a href="{{route('details', $product['name'])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">View Details</a><br>
+                                            {{-- <a href="{{route('cart', [$product['name'], $item['name'], @$item['price'], $item['quantity']])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a><br>
                                                                                          --}}
                                             @endif
                                                 
@@ -778,8 +782,11 @@
     
         ga('create', 'UA-42715764-9', 'auto');
         ga('send', 'pageview');
+
         function change(id) {
+
         // var id = document.getElementById("myText").value;
+
         document.getElementById('btncart-' + id).innerHTML = 'Added';
 }
  
