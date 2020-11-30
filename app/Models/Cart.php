@@ -70,6 +70,7 @@ public function addProduct($productname, $pharmaname, $productprice, $productqua
         $products['quantity'] += $qty;
         // $products['price'] = $productprice * $products['quantity'];
         $products['price'] = $productprice;
+        $products['productname'] = $productname;
         $products['pharmaname'] = $pharmaname;
       //  $this->contents[$pharmaname] = $products;
          $this->contents[$productname] = $products;

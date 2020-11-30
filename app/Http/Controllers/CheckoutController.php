@@ -74,14 +74,17 @@ class CheckoutController extends Controller
        
        
                 ]);
+
                 foreach ($cart->getContents() as $slug => $product) {
-                $orderdetails = OrderDetail::create([
+                 
+                    $orderdetails = OrderDetail::create([
        
        
                     'order_id' => $order->id,
                     'quantity' => $product['quantity'],
                     'user_id' => $user->id,
                     'product_id' => 0,
+                    'name'=> $product['productname'],
                     'pharmaname' => $product['pharmaname'],
                     'unit_price' => $product['price']
                    
