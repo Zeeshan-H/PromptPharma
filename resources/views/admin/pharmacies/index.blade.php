@@ -70,10 +70,18 @@ The above copyright notice and this permission notice shall be included in all c
                 </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="./icons.html">
-                  <i class="material-icons">bubble_chart</i>
-                  <p>Logout</p>
+                <form action="{{route('logout')}}" method="POST">
+                @csrf
+  
+                  <a class="nav-link">
+  
+                    <i class="material-icons">bubble_chart</i>
+  
+                    {{-- <p>Logout</p> --}}
+                    <input type="submit" class="btn btn-success" value="Logout">          
                 </a>
+  
+              </form>
               </li>
   
             </ul>

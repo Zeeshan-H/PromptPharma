@@ -87,58 +87,79 @@
                                     </nav>
                                 </div>
                                 <a href="#" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1"></a>
+                                @if(isset($cart) && $cart->getContents())
+                                {{-- @foreach($cart->getContents() as $slug => $product) --}}
+
+                                @php
+                                $produc = $cart->getContents();
+                                foreach($cart->getContents() as $slug => $product) {
+                                        $prod = $product;
+                                    
+                                }
+                                @endphp 
                                 <div class="mini-cart order-4 justify-content-end">
                                     <span class="font-weight-bold font-primary">
-                                        @if (isset($cart))
-                                        <span class="cart-total">{{'PKR '. @$cart->getTotalPrice()}}</span>
-                                        @else 
-                                        <span class="cart-total">PKR 0</span>                                            
-                                        @endif
-
+                                        <span class="cart-total">{{'PKR '. @array_sum($total)}}</span>
+                                    
+                                     
                                     </span>
-                                    <div class="mini-cart-icon">
-                                        <img src="{{asset('frontimages/cart-bag.svg')}}" class="img-fluid" alt="" />
-                                        @if (isset($cart))
-                                        <span class="badge badge-primary rounded-circle">{{$cart->getTotalQty()}}</span>
-                                        @else 
-                                        <span class="badge badge-primary rounded-circle">0</span>                                            
-                                        @endif
 
+   
+                                    <div class="mini-cart-icon">
+                                
+                                        <img src="{{asset('frontimages/cart-bag.svg')}}" class="img-fluid" alt="" />
+                                        <span class="badge badge-primary rounded-circle">{{$cart->getTotalQty()}}</span>
+                                 
+                                  
                                     </div>
+
                                     <div class="mini-cart-content">
                                         <div class="inner-wrapper bg-light rounded">
-                                            {{-- <div class="mini-cart-product">
+                                            @foreach($cart->getContents() as $slug => $product)
+                                            <div class="mini-cart-product">
+
                                                 <div class="row">
+
                                                     <div class="col-7">
-                                                        <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">COVID-19 Masks</h2>
+                                                        <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">{{$product['name']}}</h2>
                                                         <strong class="text-color-dark">
-                                                            <span class="qty">1x</span>
-                                                            @if (isset($cart))
-                                                            <span class="cart-total">{{'PKR '. @$cart->getTotalPrice()}}</span>
-                                                            @else 
-                                                            <span class="cart-total">PKR 0</span>                                            
-                                                            @endif
+                                                            <span class="qty">{{$product['quantity']}}x</span>
+                                                            <span class="cart-total">{{'PKR '. $product['price']}}</span>
+                                                         
+                                                            {{-- <span class="cart-total">PKR 0</span>                                            
+                                                         --}}
                                                         </strong>
                                                     </div>
+                                           
+
                                                     <div class="col-5">
+                                                       
                                                         <div class="product-image">
-                                                            <a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
-                                                            <img src="img/products/product-2.jpg" class="img-fluid rounded" alt="" />
+                                                            <form action="{{route('cart.remove', $product['name'])}}" method="POST" accept-charset="utf-8">
+                                                                @csrf
+                                                            
+                                                            <input type="submit" name="remove" value="x Remove" class="btn btn-outline-danger"/>
+                                                            </form>
+                                                            {{-- <a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a> --}}
+                                                            <img src="{{asset('frontimages/noimg.jpg')}}" class="img-fluid rounded" alt="" />
+                                                            <img src="" class="img-fluid rounded" alt="" />                                                                
+                                                        
                                                         </div>
+
                                                     </div>
+
                                                 </div>
-                                            </div> --}}
+
+                                            </div>
+                                            @endforeach
                                             <div class="mini-cart-total">
                                                 <div class="row">
                                                     <div class="col">
                                                         <strong class="text-color-dark">TOTAL:</strong>
                                                     </div>
                                                     <div class="col text-right">
-                                                        @if (isset($cart))
-                                                        <span class="total-value text-color-dark">{{'PKR '. @$cart->getTotalPrice()}}</span>
-                                                        @else 
-                                                        <span class="total-value text-color-dark">PKR 0</span>                                            
-                                                        @endif
+                                                        <span class="total-value text-color-dark">{{'PKR '. @array_sum($total)}}</span>
+                                                        {{-- <span class="total-value text-color-dark">PKR 0</span>                                             --}}
                                                         {{-- <strong class="total-value text-color-dark">PKR 100</strong> --}}
                                                     </div>
                                                 </div>
@@ -156,6 +177,66 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- @endforeach --}}
+                                @else 
+                                <div class="mini-cart order-4 justify-content-end">
+                                    <span class="font-weight-bold font-primary">
+                                        <span class="cart-total">PKR 0</span>                                            
+                                      
+                                    </span>
+
+                                    <div class="mini-cart-icon">
+                                        <img src="{{asset('frontimages/cart-bag.svg')}}" class="img-fluid" alt="" />
+                                        <span class="badge badge-primary rounded-circle">0</span>                                            
+                                        
+                                    </div>
+                                    <div class="mini-cart-content">
+                                        <div class="inner-wrapper bg-light rounded">
+                                            <div class="mini-cart-product">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">{{@$product['name']}}</h2>
+                                                        <strong class="text-color-dark">
+                                                            <span class="qty">1x</span>
+                                                            <span class="cart-total">PKR 0</span>                                            
+                                                        
+                                                        </strong>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="product-image">
+                                                            <a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
+                                                            <img src="" class="img-fluid rounded" alt="" />                                                                
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini-cart-total">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <strong class="text-color-dark">TOTAL:</strong>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        {{-- <span class="total-value text-color-dark">{{'PKR '. @$cart->getTotalPrice()}}</span> --}}
+                                                        <span class="total-value text-color-dark">PKR 0</span>                                            
+                                                        {{-- <strong class="total-value text-color-dark">PKR 100</strong> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini-cart-actions">
+                                                <div class="row">
+                                                    <div class="col pr-1">
+                                                        <a href="{{route('cart.all')}}" class="btn btn-dark font-weight-bold rounded text-0">VIEW CART</a>
+                                                    </div>
+                                                    <div class="col pl-1">
+                                                        <a href="{{route('checkout')}}" class="btn btn-primary font-weight-bold rounded text-0">CHECKOUT</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                                 <button class="header-btn-collapse-nav order-4 ml-3" data-toggle="collapse" data-target=".header-nav-main nav">
                                     <span class="hamburguer">
                                         <span></span>
@@ -176,6 +257,7 @@
         <div role="main" class="main">
             <div class="slider-container slider-container-height-600 rev_slider_wrapper">
                 <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.7" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'sliderLayout': 'standard', 'gridwidth': [1140,960,720,540], 'gridheight': [600,600,600,600], 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,576], 'navigation' : {'arrows': { 'enable': true, 'hide_under': 767, 'style': 'slider-arrows-style-1 slider-arrows-light' }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 35, 'h_offset': 0}}}">
+
                     <ul>
                         <li data-transition="fade">
                             <img src="{{asset('frontimages/slide-1-1.jpg')}}"  
@@ -227,7 +309,7 @@
                                 data-mask_in="x:0px;y:0px;">PRODUCTS <span class="bg-dark text-color-light font-weight-bold p-1">UPTO 20% OFF</span></div>
 
                             <a class="tp-caption btn btn-rounded btn-primary font-weight-semibold text-1"
-                                href="{{route('allproducts')}}"
+                                href="{{route('search')}}"
                                 data-x="left" data-hoffset="['50','50','15','15']"
                                 data-y="center" data-voffset="['115','115','115','115']"
                                 data-start="1600"
@@ -291,7 +373,7 @@
                                 data-mask_in="x:0px;y:0px;">MORE THAN <span class="bg-light text-color-dark font-weight-bold p-1">500 PRODUCTS</span></div>
 
                             <a class="tp-caption btn btn-rounded btn-primary font-weight-semibold text-1"
-                                href="{{route('allproducts')}}"
+                                href="{{route('search')}}"
                                 data-x="left" data-hoffset="['750','630','420','290']"
                                 data-y="center" data-voffset="['115','115','115','115']"
                                 data-start="1600"
@@ -308,6 +390,7 @@
                     </ul>
                 </div>
             </div>
+        
             <section class="section pt-4 pb-5 mt-2">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -470,18 +553,36 @@
                                                 <img src="{{asset(''.$product->image_path)}}" alt="" height="300px" width="400px">
                                             {{-- </a> --}}
                                             <div class="image-frame-action">
-                                                <a href="{{route('cart', [$product, $product])}}" id="btncart-{{$product->image_id}}" onclick="change('{{$product->image_id}}')" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                                <a href="{{route('cart2', [$product, $product])}}" id="btncart-{{$product->image_id}}" onclick="change('{{$product->image_id}}')" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
                                                 <input type="hidden" value="{{$product->image_id}}" id="myText">
+                                             
+                                                {{-- <a href="{{route('cart', [$product['name'], $product['type']])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                                                                              --}}
                                             </div>
                                         </div>
                                     </div>
                                     <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">{{@$product->products->name}}</a></h3>
                                     <span class="price font-primary text-4"><strong class="text-color-dark">{{@$product->products->price. 'PKR'}}</strong></span>
+
+                                    {{-- <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">{{@$product['name']}}</a></h3><br>
+                                    @foreach ($product['pharmacyList'] as $item)
+                                 
+                                    @if ($item['price'] == null)
+                                    <span class="price font-primary text-4"><strong class="text-color-dark">{{@$item['name'].': '. 'N/A'}}</strong></span><br>
+                                    <a href="{{route('cart', [$product['name'], $item['name'], 0, $item['quantity']])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a><br>
+                         
+                                    @else 
+                                    <span class="price font-primary text-4"><strong class="text-color-dark">{{@$item['name'].': '.@$item['price'].'PKR'}}</strong></span><br>
+                                    <a href="{{route('cart', [$product['name'], $item['name'], @$item['price'], $item['quantity']])}}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a><br>
+                                    
+                                    @endif
+                                        
+                                    @endforeach --}}
                                     {{-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$40</strong></span> --}}
                                   
                                 </div>
                                 @endforeach
-                                
+ 
                             </div>
 
 
@@ -494,7 +595,7 @@
             <div class="container">
                 <hr>
             </div>
-            <section class="section pb-5">
+            {{-- <section class="section pb-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
@@ -649,7 +750,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <div class="container">
                 <hr>
             </div>
@@ -751,7 +852,7 @@
     
     <!-- Theme Initialization Files -->
     <script src="{{asset('frontjs/theme.init.js')}}"></script>
-
+  
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -769,6 +870,8 @@
 document.getElementById('btncart-' + id).innerHTML = 'Added';
         }
     </script>
+
+
 
 </body>
 

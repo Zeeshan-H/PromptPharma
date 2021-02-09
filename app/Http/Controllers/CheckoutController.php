@@ -16,10 +16,21 @@ class CheckoutController extends Controller
     public function index() {
 
         $cart = Session::get('cart');
-        return view('prompt.checkout.index', compact('cart'));
+        $total = [];
+        if(isset($cart) && $cart->getContents()) {
+            foreach($cart->getContents() as $slug => $product) {
+            $total[] = $product['price'] * $product['quantity']; 
+            }
+    
+        }
+        else {
+    
+            $total[] = 0;
+        }
+        return view('prompt.checkout.index', compact('cart', 'total'));
     }
 
-    public function checkout(Request $request) {
+    public function checkout($total, Request $request) {
 
         $cart = Session::get('cart');
         $checker = new EmailChecker();
@@ -58,23 +69,44 @@ class CheckoutController extends Controller
                     'phone' => $request->billing_phone,
                     'status' => 2,
                     'total_qty' => $cart->getTotalQty(),
-                    'total_price' => $cart->getTotalPrice(),
+                    'total_price' => $total,
                     'shipping_fee' => null
        
        
                 ]);
+
                 foreach ($cart->getContents() as $slug => $product) {
-                $orderdetails = OrderDetail::create([
+                 
+                    if(!isset($product['productname'])) {
+                        $orderdetails = OrderDetail::create([
+       
+       
+                            'order_id' => $order->id,
+                            'quantity' => $product['quantity'],
+                            'user_id' => $user->id,
+                            'product_id' => $product['id'],
+                            'name'=> $product['name'],
+                            'pharmaname' => $product['brand_id'],
+                            'unit_price' => $product['price']
+                           
+                        ]);
+
+                    }
+                    else {
+                    $orderdetails = OrderDetail::create([
        
        
                     'order_id' => $order->id,
                     'quantity' => $product['quantity'],
                     'user_id' => $user->id,
-                    'product_id' => $product['product']->id,
-                    'unit_price' => $product['product']->price
+                    'product_id' => 0,
+                    'name'=> $product['productname'],
+                    'pharmaname' => $product['pharmaname'],
+                    'unit_price' => $product['price']
                    
                 ]);
-               }
+            }
+        }
 
                if($user && $order && $orderdetails) {
                 $details = [

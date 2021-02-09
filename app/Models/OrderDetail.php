@@ -18,7 +18,9 @@ class OrderDetail extends Model
         'order_id',
         'quantity',
         'user_id',
+        'name',
+        'pharmaname',
         'product_id',
-        'unit_price'
+        'unit_price',
     ];
 }

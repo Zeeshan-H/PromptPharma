@@ -16,6 +16,18 @@ class AboutController extends Controller
         $pharmacies = BrandImage::with('brands')->orderBy('image_id', 'desc')->take(6)->get();
         $cart = Session::get('cart');
 
-        return view('prompt.about.index', compact('pharmacies', 'cart'));
+        $total = [];
+        if(isset($cart) && $cart->getContents()) {
+            foreach($cart->getContents() as $slug => $product) {
+            $total[] = $product['price'] * $product['quantity']; 
+            }
+
+        }
+        else {
+
+            $total[] = 0;
+        }
+
+        return view('prompt.about.index', compact('pharmacies', 'cart', 'total'));
     }
 }

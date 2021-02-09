@@ -15,7 +15,7 @@
         <div class="sidebar-wrapper">
           <ul class="nav">
             <li class="nav-item active  ">
-              <a class="nav-link" href="./dashboard.html">
+              <a class="nav-link" href="{{route('admin.dashboard')}}">
                 <i class="material-icons">dashboard</i>
                 <p>Dashboard</p>
               </a>
@@ -39,10 +39,18 @@
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="./icons.html">
-                <i class="material-icons">bubble_chart</i>
-                <p>Logout</p>
+              <form action="{{route('logout')}}" method="POST">
+              @csrf
+
+                <a class="nav-link">
+
+                  <i class="material-icons">bubble_chart</i>
+
+                  {{-- <p>Logout</p> --}}
+                  <input type="submit" class="btn btn-success" value="Logout">          
               </a>
+
+            </form>
             </li>
 
           </ul>

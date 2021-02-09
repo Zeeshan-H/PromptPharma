@@ -18,6 +18,8 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('order_id');
             $table->integer('quantity');            
             $table->integer('user_id');
+            $table->string('name');
+            $table->string('pharmaname');
             $table->integer('product_id');
             $table->double('unit_price');            
             $table->timestamps();

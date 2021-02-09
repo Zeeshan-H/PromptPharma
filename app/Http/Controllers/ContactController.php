@@ -14,7 +14,19 @@ class ContactController extends Controller
 
         $cart = Session::get('cart');
 
-        return view('prompt.contact.index', compact('cart'));
+        $total = [];
+        if(isset($cart) && $cart->getContents()) {
+            foreach($cart->getContents() as $slug => $product) {
+            $total[] = $product['price'] * $product['quantity']; 
+            }
+    
+        }
+        else {
+    
+            $total[] = 0;
+        }
+
+        return view('prompt.contact.index', compact('cart', 'total'));
     }
 
     public function sendemail(Request $request) {
