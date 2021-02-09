@@ -77,7 +77,6 @@ class CheckoutController extends Controller
 
                 foreach ($cart->getContents() as $slug => $product) {
                  
-<<<<<<< HEAD
                     if(!isset($product['productname'])) {
                         $orderdetails = OrderDetail::create([
        
@@ -94,8 +93,6 @@ class CheckoutController extends Controller
 
                     }
                     else {
-=======
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                     $orderdetails = OrderDetail::create([
        
        

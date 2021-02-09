@@ -120,7 +120,6 @@
                                             <div class="mini-cart-product">
 
                                                 <div class="row">
-<<<<<<< HEAD
 
                                                     <div class="col-7">
                                                         <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">{{$product['name']}}</h2>
@@ -134,21 +133,6 @@
                                                     </div>
                                            
 
-=======
-
-                                                    <div class="col-7">
-                                                        <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">{{$product['name']}}</h2>
-                                                        <strong class="text-color-dark">
-                                                            <span class="qty">{{$product['quantity']}}x</span>
-                                                            <span class="cart-total">{{'PKR '. $product['price']}}</span>
-                                                         
-                                                            {{-- <span class="cart-total">PKR 0</span>                                            
-                                                         --}}
-                                                        </strong>
-                                                    </div>
-                                           
-
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                                     <div class="col-5">
                                                        
                                                         <div class="product-image">
@@ -319,11 +303,7 @@
                                                     <img src="{{asset('frontimages/noimg.jpg')}}" class="img-fluid" width="67" alt=""/>
                                                 </td>
                                                 <td class="product-name">
-<<<<<<< HEAD
                                                     <a href="#">{{$product['name']}}</a>
-=======
-                                                    <a href="shop-product-detail-right-sidebar.html">{{$product['name']}}</a>
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                                 </td>
                                                 <td class="product-price">
                                                     <span class="unit-price">{{@$product['price']}}</span>
@@ -336,7 +316,6 @@
                                                             <input type="button" value="-" class="minus">
                                                 
 															<input type="number" min="0" max="99" name="qty" value="{{$product['quantity']}}" title="Qty" class="qty" size="2" id="qty">
-<<<<<<< HEAD
 															<input type="button" value="+" class="plus" id="plus">
                                                             <input type="submit" name="update" value="Update" class="btn btn-block btn-outline-success btn-round">
                                     
@@ -345,13 +324,6 @@
                                                      
                                                         <input type="submit" name="update" value="Update" class="btn btn-block btn-outline-success btn-round"> --}}
                                                          {{-- <input type="button" value="+" class="plus">  --}}
-=======
-															<input type="button" value="+" class="plus">
-                                                            <input type="submit" name="update" value="Update" class="btn btn-block btn-outline-success btn-round">
-                                                            {{-- <input type="button" value="-" min="1" class="minus">s
-                                                        <input type="number" step="1" min="1" max="99" id="qty" name="qty" value="{{$product['quantity']}}" class="input-sm">
-                                                        <input type="button" value="+" class="plus"> --}}
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
 
                                                       
                                                     </form>
@@ -589,7 +561,6 @@
     
         ga('create', 'UA-42715764-9', 'auto');
         ga('send', 'pageview');
-<<<<<<< HEAD
 
 
     </script>
@@ -632,16 +603,6 @@
         }
     });
 });
-=======
-        function myFunction() {
-  //          alert('Hello');
-          
-            if(document.getElementById('qty').value == 0) {
-                document.getElementById('qty').value = 1;
-            }
-            
-         
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
     </script>
 </body>
     

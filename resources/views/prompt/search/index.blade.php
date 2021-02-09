@@ -337,11 +337,7 @@
                                                 Name
                                               </th>
                                               <th>
-<<<<<<< HEAD
                                               Quantity
-=======
-                                              Pharmacy
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                               </th>
                                               <th>
                                               Price
@@ -362,7 +358,6 @@
 
                                                     <td><strong class="text-color-dark">{{@$product['name']}} <br></strong></td>
                                                     <td>             
-<<<<<<< HEAD
                                                         @if(is_array($product['pharmacyList']) || is_object($product['pharmacyList']))
                                                         @foreach ($product['pharmacyList'] as $item)
                                  
@@ -371,28 +366,14 @@
                                                         <br><br>
                                                         @else 
                                                         <strong class="text-color-dark">{{@$item['quantity']}} <br></strong>
-=======
-                                                        @foreach ($product['pharmacyList'] as $item)
-                                 
-                                                        @if ($item['price'] == null)
-                                                        <strong class="text-color-dark">{{@$item['name']}} <br></strong>
-                                                        <br><br>
-                                                        @else 
-                                                        <strong class="text-color-dark">{{@$item['name']}} <br></strong>
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                                         <br><br>
                                                         @endif
                                                             
                                                         @endforeach
-<<<<<<< HEAD
                                                         @endif
                                            </td>
                                            <td>
                                             @if(is_array($product['pharmacyList']) || is_object($product['pharmacyList']))   
-=======
-                                           </td>
-                                           <td>
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                             @foreach ($product['pharmacyList'] as $item)
                                  
                                             @if ($item['price'] == null)
@@ -404,7 +385,6 @@
                                             @endif
                                                 
                                             @endforeach
-<<<<<<< HEAD
                                             @endif
                                            </td>
                                            <td><strong class="text-color-dark">{{@$product['type']}} <br></strong></td>
@@ -412,12 +392,6 @@
                                            <td>
                                             @if(is_array($product['pharmacyList']) || is_object($product['pharmacyList']))
                                             @foreach ($product['pharmacyList'] as $item)
-=======
-                                           </td>
-                                           <td><strong class="text-color-dark">{{@$product['type']}} <br></strong></td>
-                                           <td><strong class="text-color-dark">{{@$product['company']}} <br></strong></td>   
-                                           <td>                                                        @foreach ($product['pharmacyList'] as $item)
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                  
                                             @if ($item['price'] == null)
                                             <br>
@@ -427,13 +401,9 @@
                                              <br>
                                             @endif
                                                 
-<<<<<<< HEAD
                                             @endforeach
                                             @endif
                                         </td>
-=======
-                                            @endforeach</td>
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                         </tbody>
                                             @endforeach
                                           </table>

@@ -466,10 +466,7 @@
                                     <div class="product-info d-flex flex-column flex-lg-row justify-content-between">
                                         <div class="product-info-title">
                                             <h3 class="text-color-default text-2 line-height-1 mb-1"><a href="shop-product-detail-right-sidebar.html">{{@$product['name']}}</a></h3><br>
-<<<<<<< HEAD
                                             @if(is_array($product['pharmacyList']) || is_object($product['pharmacyList']))
-=======
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                             @foreach ($product['pharmacyList'] as $item)
                                  
                                             @if ($item['price'] == null)
@@ -483,11 +480,7 @@
                                             @endif
                                                 
                                             @endforeach
-<<<<<<< HEAD
                                             @endif
-=======
-
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
                                             {{-- <span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">$69</strong></span> --}}
                                         </div>
                                     </div>

@@ -26,23 +26,18 @@ class Cart {
 
     }
 
-<<<<<<< HEAD
     public function addProduct2($product, $image, $qty) {
-=======
-//     public function addProduct2($product, $image, $qty) {
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
 
 
-//         $products = ['quantity' => 0, 'price' => $product->price, 'product' => $product, 'image' => $image];
+        $products = ['quantity' => 0, 'price' => $product->price, 'product' => $product, 'image' => $image];
 
-//         if($this->contents) {
+        if($this->contents) {
 
    
-//             if(array_key_exists($product->name, $this->contents)) {
-//                 $products = $this->contents[$product->name];
+            if(array_key_exists($product->name, $this->contents)) {
+                $products = $this->contents[$product->name];
 
       
-<<<<<<< HEAD
             }
         }
             $products['name'] = $product->name;
@@ -57,73 +52,9 @@ class Cart {
         
        //    dd($products);
       //  dd($this->contents);
-=======
-//             }
-//         }
-//             $products['image'] = $image;
-//             $products['quantity'] += $qty;
-//             $products['price'] = $product->price * $products['quantity'];
-//             $this->contents[$product->name] = $products;
-//             $this->totalQty+= $qty;
-//             $this->totalPrice += $product->price;
-        
-//        //     dd($products['quantity']);
-//       //  dd($this->contents);
-
-// }
-
-public function addProduct($productname, $pharmaname, $productprice, $productquat, $qty) {
-
-
-    $products = ['quantity' => 0, 'price' => $productprice, 'pharma' => $pharmaname, 'name' => $productname];
-
-    if($this->contents) {
-
-
-        if(array_key_exists($productname, $this->contents)) {
-            $products = $this->contents[$productname];
-
-  
-        }
-    }
-        // $products['image'] = $image;
-        $products['quantity'] += $qty;
-        // $products['price'] = $productprice * $products['quantity'];
-        $products['price'] = $productprice;
-        $products['productname'] = $productname;
-        $products['pharmaname'] = $pharmaname;
-      //  $this->contents[$pharmaname] = $products;
-         $this->contents[$productname] = $products;
-        $this->totalQty+= $qty;
-        // $this->totalPrice += $productprice;
-    
-   //     dd($products['quantity']);
-  //  dd($this->contents);
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
 
 }
-    // public function updateProduct($product, $qty) {
 
-    //     if($this->contents) {
-
-    //         if(array_key_exists($product->name, $this->contents)) {
-
-    //             $products = $this->contents[$product->name];
-             
-    //         }
-    //     }
-
-
-    //     $this->totalQty -= $products['quantity']; 
-    //     $this->totalPrice -= $products['price'];
-    //     $products['quantity'] = $qty;
-    //     $products['price'] = $product->price * $qty;
-    //     $this->totalPrice += $products['price']; 
-    //     $this->totalQty += $qty;
-    //     $this->contents[$product->name] = $products;
-    // }
-
-<<<<<<< HEAD
 public function addProduct($productname, $pharmaname, $productprice, $productquat, $qty) {
 
 
@@ -174,8 +105,6 @@ public function addProduct($productname, $pharmaname, $productprice, $productqua
     //     $this->contents[$product->name] = $products;
     // }
 
-=======
->>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
     public function updateProduct($product, $price, $qty) {
 
         if($this->contents) {
