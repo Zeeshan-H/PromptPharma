@@ -79,6 +79,7 @@ class HomeController extends Controller
         }
 //        dd($cart);
         return view('prompt.cart.index', compact('cart', 'total'));
+<<<<<<< HEAD
     }
 
     public function addToCart2(Product $product, ProductImage $image, Request $request) {
@@ -95,6 +96,24 @@ class HomeController extends Controller
         // Cart");
     }
 
+=======
+    }
+
+//     public function addToCart2(Product $product, ProductImage $image, Request $request) {
+//      //   $prod = Product::with('images')->get();
+//         $oldCart = Session::has('cart') ? Session::get('cart') : null;
+//         $qty = $request->qty ? $request->qty : 1;
+//         $cart = new Cart($oldCart);
+//         $cart->addProduct2($product, $image, $qty);
+
+//         Session::put('cart', $cart);
+//         return back();
+//    //     dd($cart);
+//         // return back()->with('message', "Product $product->title has been successfully added to 
+//         // Cart");
+//     }
+
+>>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
 public function addToCart($productname, $pharmaname, $productprice, $productquat, Request $request) {
     //   $prod = Product::with('images')->get();
        $oldCart = Session::has('cart') ? Session::get('cart') : null;

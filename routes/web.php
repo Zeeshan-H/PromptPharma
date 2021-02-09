@@ -26,12 +26,20 @@ Route::get('/about', 'App\Http\Controllers\AboutController@about')->name('about'
 Route::get('/search', 'App\Http\Controllers\SearchController@search')->name('search');
 Route::get('/products/{id}', 'App\Http\Controllers\AllProductController@products')->name('products');
 Route::get('/productbrands/{id}', 'App\Http\Controllers\AllProductController@productsbrand')->name('productsbrand');
+<<<<<<< HEAD
 Route::get('/productbyprice', 'App\Http\Controllers\AllProductController@productspricerange')->name('productspricerange');
 // Route::get('/productbyprice/{product}', 'App\Http\Controllers\AllProductController@productspricerange')->name('productspricerange');
 Route::get('/products', 'App\Http\Controllers\AllProductController@allproducts')->name('allproducts');
 Route::get('/productsbycat/{cat}/{search}', 'App\Http\Controllers\AllProductController@productbycat')->name('prodcat');
 Route::get('/livesearch', 'App\Http\Controllers\AllProductController@livesearch')->name('livesearch');
 Route::get('/cart/{product}/{image}', 'App\Http\Controllers\HomeController@addToCart2')->name('cart2');
+=======
+// Route::get('/productbyprice', 'App\Http\Controllers\AllProductController@productspricerange')->name('productspricerange');
+Route::get('/productbyprice/{product}', 'App\Http\Controllers\AllProductController@productspricerange')->name('productspricerange');
+Route::get('/products', 'App\Http\Controllers\AllProductController@allproducts')->name('allproducts');
+Route::get('/productsbycat/{cat}/{search}', 'App\Http\Controllers\AllProductController@productbycat')->name('prodcat');
+// Route::get('/cart/{product}/{image}', 'App\Http\Controllers\HomeController@addToCart')->name('cart');
+>>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
 Route::get('/cart/{productname}/{pharmaname}/{productprice}/{productquat}', 'App\Http\Controllers\HomeController@addToCart')->name('cart');
 // Route::get('/cart/{product}/{image}', 'App\Http\Controllers\HomeController@addToCart2')->name('cart2');
 Route::get('/product-details/{name}', 'App\Http\Controllers\DetailsController@index')->name('details');

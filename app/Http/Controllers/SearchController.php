@@ -39,7 +39,11 @@ class SearchController extends Controller
         $client = new \GuzzleHttp\Client();
                   
 
+<<<<<<< HEAD
         if($request->search != null && strlen($search) > 2) {
+=======
+        if($request->search != null) {
+>>>>>>> 30b46fd12dc68409bfe613561e242488608b7f42
             $request2 = $client->get('https://pocketpharmaapi123.el.r.appspot.com/medicine/get-medicine-details?name='.$search);
             $response = collect(json_decode($request2->getBody(), true));
             $medicineList = $response["data"]["medicineList"];
